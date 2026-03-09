@@ -1,0 +1,133 @@
+﻿const fs = require('fs');
+
+const sharedHeaderHead = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PSP Techno Engineers Pvt. Ltd. - Authorized channel partner of Danfoss for motion control products.">
+    <title>PSP Techno Engineers Pvt. Ltd | {{TITLE}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="top-contact">
+                <a href="mailto:support@psptechno.com"><i class="fa-solid fa-envelope"></i> support@psptechno.com</a>
+                <a href="tel:+919650791461"><i class="fa-solid fa-phone"></i> +91 9650791461-62-63</a>
+            </div>
+            <div class="top-social">
+                <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+    <header class="main-header">
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo-small.jpg" alt="Logo" id="logo-img"></a>
+            </div>
+            <div class="header-info">
+                <div class="info-box">
+                    <div class="icon"><i class="fa-regular fa-envelope"></i></div>
+                    <div class="text">
+                        <a href="mailto:sales@psptechno.com">sales@psptechno.com</a><br>
+                        <a href="mailto:design@psptechno.com">design@psptechno.com</a>
+                    </div>
+                </div>
+                <div class="info-action">
+                    <a href="images/PSP-Brochure.pdf" target="_blank" class="btn-ecat">E-catalogue <i class="fa-solid fa-download"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar">
+        <div class="container navbar-inner">
+            <ul class="nav-links">
+                <li><a href="index.html" class="{{HOME_ACTIVE}}">HOME</a></li>
+                <li><a href="about-us.html" class="{{ABOUT_ACTIVE}}">ABOUT US</a></li>
+                <li><a href="certifications.html" class="{{CERT_ACTIVE}}">CERTIFICATIONS</a></li>
+                <li><a href="partners.html" class="{{PARTNERS_ACTIVE}}">PARTNERS</a></li>
+                <li class="dropdown">
+                    <a href="#">OUR PRODUCTS <i class="fa-solid fa-angle-down"></i></a>
+                </li>
+                <li><a href="services.html" class="{{SERVICES_ACTIVE}}">SERVICES</a></li>
+                <li><a href="clients.html" class="{{CLIENTS_ACTIVE}}">CLIENTS</a></li>
+                <li class="dropdown">
+                    <a href="#">GALLERY <i class="fa-solid fa-angle-down"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#">GET IN TOUCH <i class="fa-solid fa-angle-down"></i></a>
+                </li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="#" id="mobile-toggle"><i class="fa-solid fa-bars"></i></a>
+            </div>
+        </div>
+    </nav>
+`;
+
+const sharedFooterParts = `
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>About Us</h3>
+                <p>PSP Techno Engineers Pvt. Ltd. came into existence on July 2009. The organization was established with the objective of providing high quality automation, full turnkey solution and 24*7 service supports to the industries.</p>
+                <div class="visitor-counter">
+                    <span class="digit">0</span><span class="digit">0</span><span class="digit">6</span><span class="digit">8</span><span class="digit">3</span><span class="digit">5</span><span class="digit">0</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Information</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fa-solid fa-caret-right"></i> Home</a></li>
+                    <li><a href="about-us.html"><i class="fa-solid fa-caret-right"></i> About Us</a></li>
+                    <li><a href="services.html"><i class="fa-solid fa-caret-right"></i> Services</a></li>
+                    <li><a href="partners.html"><i class="fa-solid fa-caret-right"></i> Partners</a></li>
+                    <li><a href="contact-us.html"><i class="fa-solid fa-caret-right"></i> Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-location-dot"></i> <div><strong>Corporate office:</strong> 306-307 3rd Floor, Aggarwal Modern Bazaar, C-33, Lawrence Road Ind. Area, Delhi - 110035</div></li>
+                    <li><i class="fa-solid fa-phone"></i> <div><a href="tel:+919650791461">+91 - 96507 91461 - 62 - 63</a></div></li>
+                    <li><i class="fa-solid fa-envelope"></i> <div><a href="mailto:sales@psptechno.com">sales@psptechno.com</a></div></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <div>All Rights Reserved ┬⌐ 2022 www.psptechno.com</div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+`;
+
+function buildPage(title, content, activeKey) {
+    let header = sharedHeaderHead.replace('{{TITLE}}', title);
+    const keys = ['HOME', 'ABOUT', 'CERT', 'PARTNERS', 'SERVICES', 'CLIENTS'];
+    for (const key of keys) {
+        header = header.replace('{{' + key + '_ACTIVE}}', key === activeKey ? 'active' : '');
+    }
+    return header + content + sharedFooterParts;
+}
+
+const indexContent = '<section class="hero-section" style="background-image: url(\\'images/main-slider/1.jpg\\'); height: 500px; display: flex; align-items: center; justify-content: center; color: white;"><div class="container text-center"><h1>IOT Based Distribution Panel.</h1><p>Industrial Automation 32CH Distribution Board DIY Smart</p></div></section>';
+const aboutContent = '<section class="page-title-banner" style="background-image: url(\\'images/main-slider/1.jpg\\'); height: 250px; display: flex; align-items: center; justify-content: center; color: white;"><div class="container"><h1>ABOUT US</h1><p>Home / About Us</p></div></section><section class="py-5"><div class="container"><h2>About Us</h2><p>PSP Techno Engineers Pvt. Ltd came into existence on July 2009. The organization was established with the objective of providing high quality automation, full turnkey solution and 24*7 service supports to the industries.</p></div></section>';
+const certContent = '<section class="page-title-banner" style="background-image: url(\\'images/main-slider/1.jpg\\'); height: 250px; display: flex; align-items: center; justify-content: center; color: white;"><div class="container"><h1>CERTIFICATIONS</h1><p>Home / Certifications</p></div></section><section class="py-5"><div class="container"><div class="cert-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;"><img src="images/gallery/cert1.jpg" alt="Cert 1" style="width: 100%; border: 1px solid #ddd; padding: 10px;"><img src="images/gallery/cert2.jpg" alt="Cert 2" style="width: 100%; border: 1px solid #ddd; padding: 10px;"><img src="images/gallery/cert3.jpg" alt="Cert 3" style="width: 100%; border: 1px solid #ddd; padding: 10px;"><img src="images/gallery/cert4.jpg" alt="Cert 4" style="width: 100%; border: 1px solid #ddd; padding: 10px;"></div></div></section>';
+const contactContent = '<section class="page-title-banner" style="background-image: url(\\'images/main-slider/1.jpg\\'); height: 250px; display: flex; align-items: center; justify-content: center; color: white;"><div class="container"><h1>CONTACT US</h1><p>Home / Contact Us</p></div></section><section class="py-5"><div class="container"><h2>Contact Us</h2><p>Corporate office: 306-307 3rd Floor, Aggarwal Modern Bazaar, C-33, Lawrence Road Ind. Area, Delhi - 110035</p></div></section>';
+
+fs.writeFileSync('index.html', buildPage('Home', indexContent, 'HOME'));
+fs.writeFileSync('about-us.html', buildPage('About Us', aboutContent, 'ABOUT'));
+fs.writeFileSync('certifications.html', buildPage('Certifications', certContent, 'CERT'));
+fs.writeFileSync('contact-us.html', buildPage('Contact Us', contactContent, ''));
+console.log("Pages generated successfully.");
+

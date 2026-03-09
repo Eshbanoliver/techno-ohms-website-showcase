@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+const fs = require('fs');
+
+const sharedHeaderHead = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PSP Techno Engineers Pvt. Ltd. - Authorized channel partner of Danfoss for motion control products.">
-    <title>PSP Techno Engineers Pvt. Ltd | Home</title>
+    <title>PSP Techno Engineers Pvt. Ltd | {{TITLE}}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -45,10 +47,10 @@
     <nav class="navbar">
         <div class="container navbar-inner">
             <ul class="nav-links">
-                <li><a href="index.html" class="active">HOME</a></li>
-                <li><a href="about-us.html" class="">ABOUT US</a></li>
-                <li><a href="certifications.html" class="">CERTIFICATIONS</a></li>
-                <li><a href="partners.html" class="">PARTNERS</a></li>
+                <li><a href="index.html" class="{{HOME_ACTIVE}}">HOME</a></li>
+                <li><a href="about-us.html" class="{{ABOUT_ACTIVE}}">ABOUT US</a></li>
+                <li><a href="certifications.html" class="{{CERT_ACTIVE}}">CERTIFICATIONS</a></li>
+                <li><a href="partners.html" class="{{PARTNERS_ACTIVE}}">PARTNERS</a></li>
                 <li class="dropdown">
                     <a href="#">OUR PRODUCTS <i class="fa-solid fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
@@ -70,8 +72,8 @@
                         <li><a href="#">Harmonic Filters</a></li>
                     </ul>
                 </li>
-                <li><a href="services.html" class="">SERVICES</a></li>
-                <li><a href="clients.html" class="">CLIENTS</a></li>
+                <li><a href="services.html" class="{{SERVICES_ACTIVE}}">SERVICES</a></li>
+                <li><a href="clients.html" class="{{CLIENTS_ACTIVE}}">CLIENTS</a></li>
                 <li class="dropdown">
                     <a href="#">GALLERY <i class="fa-solid fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
@@ -95,7 +97,91 @@
             </div>
         </div>
     </nav>
+`;
 
+const sharedFooterParts = `
+    <!-- CTA Bar -->
+    <div class="cta-bar">
+        <div class="container cta-inner">
+            <h3 class="cta-text">We are Trusted Globally by Millions of Clients</h3>
+            <a href="contact-us.html" class="btn-dark">CONTACT US NOW</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>About Us</h3>
+                <p>PSP Techno Engineers Pvt. Ltd. came into existence on July 2009. The organization was established with the objective of providing high quality automation, full turnkey solution and 24*7 service supports to the industries.</p>
+                <a href="about-us.html" class="btn-outline-small">READ MORE</a>
+                <div class="visitor-counter">
+                    <span class="digit">0</span><span class="digit">0</span><span class="digit">6</span><span class="digit">8</span><span class="digit">3</span><span class="digit">5</span><span class="digit">0</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Information</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fa-solid fa-caret-right"></i> Home</a></li>
+                    <li><a href="about-us.html"><i class="fa-solid fa-caret-right"></i> About Us</a></li>
+                    <li><a href="#"><i class="fa-solid fa-caret-right"></i> Our Products</a></li>
+                    <li><a href="services.html"><i class="fa-solid fa-caret-right"></i> Services</a></li>
+                    <li><a href="partners.html"><i class="fa-solid fa-caret-right"></i> Partners</a></li>
+                    <li><a href="#"><i class="fa-solid fa-caret-right"></i> Enquiry</a></li>
+                    <li><a href="contact-us.html"><i class="fa-solid fa-caret-right"></i> Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Latest Projects</h3>
+                <div class="project-gallery">
+                    <img src="images/project-thumb-1.jpg" alt="P1">
+                    <img src="images/project-thumb-2.jpg" alt="P2">
+                    <img src="images/project-thumb-3.jpg" alt="P3">
+                    <img src="images/project-thumb-4.jpg" alt="P4">
+                    <img src="images/project-thumb-5.jpg" alt="P5">
+                    <img src="images/project-thumb-6.jpg" alt="P6">
+                    <img src="images/project-thumb-7.jpg" alt="P7">
+                    <img src="images/project-thumb-8.jpg" alt="P8">
+                    <img src="images/project-thumb-9.jpg" alt="P9">
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-location-dot"></i> <div><strong>Corporate office:</strong> 306-307 3rd Floor, Aggarwal Modern Bazaar, C-33, Lawrence Road Ind. Area, Delhi - 110035</div></li>
+                    <li><i class="fa-solid fa-location-dot"></i> <div><strong>Works:</strong> Plot No. 437, Block - Udyog Kendra Extn - II, Ecotech -III, Greater Noida , Gautam Buddh Nagar, Uttar Pradesh - 201301</div></li>
+                    <li><i class="fa-solid fa-phone"></i> <div><a href="tel:01127180524">011 - 2718 0524-25, 4701 2626</a></div></li>
+                    <li><i class="fa-solid fa-phone"></i> <div><a href="tel:+919650791461">+91 - 96507 91461 - 62 - 63</a></div></li>
+                    <li><i class="fa-solid fa-envelope"></i> <div><a href="mailto:sales@psptechno.com">sales@psptechno.com</a></div></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <div>All Rights Reserved © 2022 www.psptechno.com</div>
+                <div>Designed & Hosted By : <a href="#">Hanji Creations</a></div>
+            </div>
+        </div>
+    </footer>
+    <!-- WhatsApp Icon -->
+    <a href="https://wa.me/919650791461" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <script src="script.js"></script>
+</body>
+</html>
+`;
+
+function buildPage(title, content, activeKey) {
+    let header = sharedHeaderHead.replace('{{TITLE}}', title);
+    const keys = ['HOME', 'ABOUT', 'CERT', 'PARTNERS', 'SERVICES', 'CLIENTS'];
+    for (const key of keys) {
+        header = header.replace('{{' + key + '_ACTIVE}}', (key === activeKey ? 'active' : ''));
+    }
+    return header + content + sharedFooterParts;
+}
+
+const indexContent = `
     <!-- Hero Section -->
     <section class="hero-section" style="background-image: url('images/main-slider/1.jpg');">
         <div class="hero-overlay"></div>
@@ -264,74 +350,87 @@
             </div>
         </div>
     </section>
+`;
 
-    <!-- CTA Bar -->
-    <div class="cta-bar">
-        <div class="container cta-inner">
-            <h3 class="cta-text">We are Trusted Globally by Millions of Clients</h3>
-            <a href="contact-us.html" class="btn-dark">CONTACT US NOW</a>
+const aboutContent = `
+    <section class="page-title-banner" style="background-image: url('images/main-slider/1.jpg');">
+        <div class="banner-overlay"></div>
+        <div class="container banner-content text-center">
+            <h1>ABOUT US</h1>
+            <p>Home / About Us</p>
         </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <h3>About Us</h3>
-                <p>PSP Techno Engineers Pvt. Ltd. came into existence on July 2009. The organization was established with the objective of providing high quality automation, full turnkey solution and 24*7 service supports to the industries.</p>
-                <a href="about-us.html" class="btn-outline-small">READ MORE</a>
-                <div class="visitor-counter">
-                    <span class="digit">0</span><span class="digit">0</span><span class="digit">6</span><span class="digit">8</span><span class="digit">3</span><span class="digit">5</span><span class="digit">0</span>
+    </section>
+    <section class="py-5">
+        <div class="container">
+            <div class="row" style="display: flex; gap: 40px; align-items: center;">
+                <div style="flex: 1;">
+                    <h2>Our History</h2>
+                    <p>PSP Techno Engineers Pvt. Ltd came into existence on July 2009. The organization was established with the objective of providing high quality automation, full turnkey solution and 24*7 service supports to the industries.</p>
+                    <p>PSP Techno has grown exponentially since its inception. This has been possible due to highly versatile engineers who have proven experience. Our experience in a wide variety of industries provides us with unparalleled knowledge that enables us to undertake your tough design challenges.</p>
+                </div>
+                <div style="flex: 1;">
+                    <img src="images/about-us-img.jpg" alt="About Us" class="img-fluid rounded shadow" onerror="this.src='images/1.jpg'" style="width: 100%; border-radius: 8px;">
                 </div>
             </div>
-            <div class="footer-col">
-                <h3>Information</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html"><i class="fa-solid fa-caret-right"></i> Home</a></li>
-                    <li><a href="about-us.html"><i class="fa-solid fa-caret-right"></i> About Us</a></li>
-                    <li><a href="#"><i class="fa-solid fa-caret-right"></i> Our Products</a></li>
-                    <li><a href="services.html"><i class="fa-solid fa-caret-right"></i> Services</a></li>
-                    <li><a href="partners.html"><i class="fa-solid fa-caret-right"></i> Partners</a></li>
-                    <li><a href="#"><i class="fa-solid fa-caret-right"></i> Enquiry</a></li>
-                    <li><a href="contact-us.html"><i class="fa-solid fa-caret-right"></i> Contact Us</a></li>
-                </ul>
+        </div>
+    </section>
+`;
+
+const certContent = `
+    <section class="page-title-banner" style="background-image: url('images/main-slider/1.jpg');">
+        <div class="banner-overlay"></div>
+        <div class="container banner-content text-center">
+            <h1>CERTIFICATIONS</h1>
+            <p>Home / Certifications</p>
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="container">
+            <div class="cert-grid">
+                <div class="cert-card"><img src="images/ISO-9001.jpg" alt="ISO 9001"></div>
+                <div class="cert-card"><img src="images/Danfoss-Certifications.jpg" alt="Danfoss"></div>
+                <div class="cert-card"><img src="images/RR-Kabel-Cable-and-Wire-Fair-Certifications.jpg" alt="RR Kabel"></div>
+                <div class="cert-card"><img src="images/GEF-UNIDO-BEE.jpg" alt="GEF UNIDO"></div>
             </div>
-            <div class="footer-col">
-                <h3>Latest Projects</h3>
-                <div class="project-gallery">
-                    <img src="images/project-thumb-1.jpg" alt="P1">
-                    <img src="images/project-thumb-2.jpg" alt="P2">
-                    <img src="images/project-thumb-3.jpg" alt="P3">
-                    <img src="images/project-thumb-4.jpg" alt="P4">
-                    <img src="images/project-thumb-5.jpg" alt="P5">
-                    <img src="images/project-thumb-6.jpg" alt="P6">
-                    <img src="images/project-thumb-7.jpg" alt="P7">
-                    <img src="images/project-thumb-8.jpg" alt="P8">
-                    <img src="images/project-thumb-9.jpg" alt="P9">
+        </div>
+    </section>
+`;
+
+const contactContent = `
+    <section class="page-title-banner" style="background-image: url('images/main-slider/1.jpg');">
+        <div class="banner-overlay"></div>
+        <div class="container banner-content text-center">
+            <h1>CONTACT US</h1>
+            <p>Home / Contact Us</p>
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="container">
+            <div class="details-grid">
+                <div class="info-col">
+                    <h3>Get In Touch</h3>
+                    <p>Contact us for any technical support or enquiries.</p>
+                    <ul class="contact-list">
+                        <li><i class="fa-solid fa-location-dot"></i> 306-307, Aggarwal Modern Bazaar, C-33, Lawrence Road, Delhi - 110035</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 96507 91461</li>
+                        <li><i class="fa-solid fa-envelope"></i> sales@psptechno.com</li>
+                    </ul>
+                </div>
+                <div class="form-col">
+                    <form class="contact-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
                 </div>
             </div>
-            <div class="footer-col">
-                <h3>Contact Us</h3>
-                <ul class="contact-list">
-                    <li><i class="fa-solid fa-location-dot"></i> <div><strong>Corporate office:</strong> 306-307 3rd Floor, Aggarwal Modern Bazaar, C-33, Lawrence Road Ind. Area, Delhi - 110035</div></li>
-                    <li><i class="fa-solid fa-location-dot"></i> <div><strong>Works:</strong> Plot No. 437, Block - Udyog Kendra Extn - II, Ecotech -III, Greater Noida , Gautam Buddh Nagar, Uttar Pradesh - 201301</div></li>
-                    <li><i class="fa-solid fa-phone"></i> <div><a href="tel:01127180524">011 - 2718 0524-25, 4701 2626</a></div></li>
-                    <li><i class="fa-solid fa-phone"></i> <div><a href="tel:+919650791461">+91 - 96507 91461 - 62 - 63</a></div></li>
-                    <li><i class="fa-solid fa-envelope"></i> <div><a href="mailto:sales@psptechno.com">sales@psptechno.com</a></div></li>
-                </ul>
-            </div>
         </div>
-        <div class="footer-bottom">
-            <div class="container footer-bottom-inner">
-                <div>All Rights Reserved © 2022 www.psptechno.com</div>
-                <div>Designed & Hosted By : <a href="#">Hanji Creations</a></div>
-            </div>
-        </div>
-    </footer>
-    <!-- WhatsApp Icon -->
-    <a href="https://wa.me/919650791461" class="whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-    <script src="script.js"></script>
-</body>
-</html>
+    </section>
+`;
+
+fs.writeFileSync('index.html', buildPage('Home', indexContent, 'HOME'));
+fs.writeFileSync('about-us.html', buildPage('About Us', aboutContent, 'ABOUT'));
+fs.writeFileSync('certifications.html', buildPage('Certifications', certContent, 'CERT'));
+fs.writeFileSync('contact-us.html', buildPage('Contact Us', contactContent, ''));
+console.log("Pages generated successfully.");
