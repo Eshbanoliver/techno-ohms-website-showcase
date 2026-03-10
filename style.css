@@ -768,42 +768,50 @@ ul {
    ABOUT US SECTION
    ========================================================================= */
 .about-home-section {
-    padding: 70px 0;
-    background-color: var(--white);
+    padding: 80px 0;
+    background-color: #eaf1f8;
     text-align: center;
 }
 
-.about-home-section h3 {
-    font-size: 18px;
+.about-main-title {
+    font-size: 24px;
     font-weight: 700;
-    margin-bottom: 15px;
-    color: var(--text-dark);
+    color: #333;
+    margin: 35px 0 15px;
 }
 
-.about-home-section p {
+.about-p-small {
     font-size: 14px;
-    color: #444;
-    margin-bottom: 25px;
+    color: #777;
     line-height: 1.8;
+    max-width: 1050px;
+    margin: 0 auto;
 }
 
-.ribbon-secondary {
-    background-color: #f2f2f2;
-    border-left: 5px solid var(--navbar-blue);
-    padding: 12px 20px;
-    margin: 30px 0;
-    text-align: center;
+.inline-logo-large {
+    height: 40px;
+    vertical-align: middle;
+    margin: 0 8px;
 }
 
-.ribbon-secondary h4 {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+.btn-know-more {
+    display: inline-block;
+    background-color: #006de4;
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 15px;
+}
+
+.btn-know-more:hover {
+    background-color: #0056b3;
+    color: var(--white);
 }
 
 
