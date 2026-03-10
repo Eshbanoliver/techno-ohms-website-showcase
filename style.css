@@ -541,8 +541,8 @@ ul {
 }
 
 .service-card-back {
-    background-color: #00366b;
-    color: var(--white);
+    background-color: #eaf1f8;
+    color: var(--text-dark);
     transform: rotateY(180deg);
     display: flex;
     align-items: center;
@@ -550,28 +550,25 @@ ul {
     padding: 30px;
 }
 
+.service-card-back .content i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #00e5ff;
+}
+
+.service-card-back .content h3 {
+    font-size: 16px;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: none;
+}
+
 .service-card-back .content p {
-    font-size: 15px;
+    font-size: 13px;
     line-height: 1.6;
-    margin-bottom: 20px;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.card-read-more {
-    display: inline-flex;
-    align-items: center;
-    color: #40e0d0;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    transition: var(--transition);
-    gap: 6px;
-}
-
-.card-read-more:hover {
-    color: var(--white);
-    gap: 12px;
+    margin-bottom: 0;
+    color: #555;
 }
 
 .service-card-front .content {
