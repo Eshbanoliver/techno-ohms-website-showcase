@@ -647,47 +647,120 @@ ul {
 /* =========================================================================
    CLIENTS SECTION
    ========================================================================= */
-.clients-section {
+.clients-carousel {
     padding: 60px 0;
     background-color: var(--white);
+    overflow: hidden;
 }
 
-.clients-grid {
+.section-header-clients {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header-clients h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.section-header-clients .decor-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.section-header-clients .decor-line::before,
+.section-header-clients .decor-line::after {
+    content: "";
+    width: 25px;
+    height: 2px;
+    background-color: #006de4;
+}
+
+.section-header-clients .decor-line i {
+    color: #e31e24;
+    font-size: 14px;
+}
+
+.clients-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0;
+}
+
+.clients-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 25s linear infinite;
+    gap: 0;
+}
+
+.clients-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.client-logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
-    margin-bottom: 20px;
+    min-width: 250px;
+    max-width: 250px;
+    height: 120px;
+    padding: 15px;
+    border: 1px solid #f0f0f0;
+    margin-right: -1px;
+    background: var(--white);
+    transition: var(--transition);
 }
 
-.clients-grid img {
-    height: 80px;
+.client-logo img {
+    max-height: 70px;
+    max-width: 100%;
     object-fit: contain;
     transition: var(--transition);
 }
 
-.clients-grid img:hover {
+.client-logo:hover img {
     transform: scale(1.05);
 }
 
 .carousel-nav {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-.carousel-nav button {
-    width: 30px;
-    height: 30px;
+.carousel-nav i {
+    width: 35px;
+    height: 35px;
     background-color: #555;
     color: var(--white);
-    border: none;
-    margin: 0 5px;
-    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
     cursor: pointer;
+    font-size: 12px;
     transition: var(--transition);
 }
 
-.carousel-nav button:hover {
+.carousel-nav i:hover {
     background-color: var(--primary-blue);
 }
 
