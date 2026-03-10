@@ -418,38 +418,49 @@ ul {
    WELCOME RIBBON
    ========================================================================= */
 .welcome-ribbon-wrapper {
-    margin-top: -30px;
     position: relative;
     z-index: 10;
-    padding: 0 15px;
+    width: 100%;
+    background: transparent;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ribbon-grey-piece {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8%;
+    background-color: #495a68;
+    clip-path: polygon(0 0, 100% 0, 40% 100%, 0 100%);
 }
 
 .welcome-ribbon {
-    background-color: var(--primary-dark);
-    max-width: 1000px;
-    margin: 0 auto;
+    width: 93%;
+    background-color: #00366b;
     text-align: center;
-    padding: 20px 40px;
+    padding: 25px 0;
     color: var(--white);
-    clip-path: polygon(2% 0, 98% 0, 100% 100%, 0% 100%);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    clip-path: polygon(3% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 .welcome-ribbon h2 {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--white);
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     letter-spacing: 0.5px;
 }
 
 .welcome-ribbon p {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+    margin-bottom: 0;
 }
 
 .inline-logo {
@@ -462,20 +473,20 @@ ul {
    ========================================================================= */
 .services-section {
     padding: 60px 0;
-    background-color: var(--bg-light);
+    background-color: #fafbfc;
 }
 
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1000px;
+    gap: 25px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
 .service-card {
     position: relative;
-    height: 200px;
+    height: 300px;
     background-size: cover;
     background-position: center;
     border-radius: 6px;
@@ -493,13 +504,12 @@ ul {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(22, 42, 69, 0.85);
-    /* Dark Navy overlay */
+    background-color: rgba(16, 33, 63, 0.82);
     transition: var(--transition);
 }
 
 .service-card:hover .overlay {
-    background-color: rgba(22, 42, 69, 0.7);
+    background-color: rgba(16, 33, 63, 0.7);
 }
 
 .service-card .content {
@@ -507,18 +517,22 @@ ul {
     z-index: 2;
     color: var(--white);
     padding: 20px;
+    width: 100%;
 }
 
 .service-card i {
-    font-size: 32px;
-    margin-bottom: 12px;
+    font-size: 44px;
+    margin-bottom: 15px;
+    color: var(--white);
 }
 
 .service-card h3 {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--white);
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    text-transform: uppercase;
 }
 
 /* =========================================================================
