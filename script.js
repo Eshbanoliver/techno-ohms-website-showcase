@@ -107,6 +107,38 @@ function initAll() {
             }
         });
     }
+
+    // 6. Scroll Reveal Animation
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // 7. Parallax Effect for Hero/Banners
+    window.onscroll = () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero-section');
+        const banner = document.querySelector('.page-title-banner');
+        
+        if (hero) {
+            hero.style.backgroundPositionY = (scrolled * 0.5) + 'px';
+        }
+        if (banner) {
+            banner.style.backgroundPositionY = (scrolled * 0.5) + 'px';
+        }
+    };
 }
 
 // AJAX Navigation Logic
