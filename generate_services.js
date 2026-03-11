@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+const fs = require('fs');
+
+const sharedHeaderHead = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PSP Techno Engineers Pvt. Ltd. - Authorized channel partner of Danfoss for motion control products.">
-    <title>PSP Techno Engineers Pvt. Ltd | Certifications</title>
+    <title>PSP Techno Engineers Pvt. Ltd | {{TITLE}}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -45,12 +47,12 @@
     <nav class="navbar">
         <div class="container navbar-inner">
             <ul class="nav-links">
-                <li><a href="index.html" class="">HOME</a></li>
-                <li><a href="about-us.html" class="">ABOUT US</a></li>
-                <li><a href="certifications.html" class="active">CERTIFICATIONS</a></li>
-                <li><a href="partners.html" class="">PARTNERS</a></li>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about-us.html">ABOUT US</a></li>
+                <li><a href="certifications.html">CERTIFICATIONS</a></li>
+                <li><a href="partners.html">PARTNERS</a></li>
                 <li class="dropdown">
-                    <a href="services.html" class="">SERVICES <i class="fa-solid fa-angle-down"></i></a>
+                    <a href="services.html" class="active">SERVICES <i class="fa-solid fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu">
                             <a href="ac-drive.html">A.C. Drive <i class="fa-solid fa-angle-right"></i></a>
@@ -98,7 +100,7 @@
                         <li><a href="instrumentation-control.html">Instrumentation & Control</a></li>
                     </ul>
                 </li>
-                <li><a href="clients.html" class="">CLIENTS</a></li>
+                <li><a href="clients.html">CLIENTS</a></li>
                 <li class="dropdown">
                     <a href="#">GALLERY <i class="fa-solid fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
@@ -122,25 +124,9 @@
             </div>
         </div>
     </nav>
+`;
 
-    <section class="page-title-banner" style="background-image: url('images/main-slider/1.jpg');">
-        <div class="banner-overlay"></div>
-        <div class="container banner-content text-center">
-            <h1>CERTIFICATIONS</h1>
-            <p>Home / Certifications</p>
-        </div>
-    </section>
-    <section class="py-5">
-        <div class="container">
-            <div class="cert-grid">
-                <div class="cert-card"><img src="images/ISO-9001.jpg" alt="ISO 9001"></div>
-                <div class="cert-card"><img src="images/Danfoss-Certifications.jpg" alt="Danfoss"></div>
-                <div class="cert-card"><img src="images/RR-Kabel-Cable-and-Wire-Fair-Certifications.jpg" alt="RR Kabel"></div>
-                <div class="cert-card"><img src="images/GEF-UNIDO-BEE.jpg" alt="GEF UNIDO"></div>
-            </div>
-        </div>
-    </section>
-
+const sharedFooterParts = `
     <!-- CTA Bar -->
     <div class="cta-bar">
         <div class="container cta-inner">
@@ -198,9 +184,8 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="container footer-bottom-inner">
-                <div>All Rights Reserved © 2022 www.psptechno.com</div>
-                <div>Designed & Hosted By : <a href="#">Hanji Creations</a></div>
+            <div class="container footer-bottom-inner" style="justify-content: center; text-align: center;">
+                <div>&copy; Copyright 2026 | Techno Ohms Solutions Pvt. Ltd. | All Rights Reserved | Powered by <a href="https://shapesway.in" target="_blank" rel="noopener" style="color: #28a745; text-decoration: none;">Shapesway Technologies Pvt. Ltd.</a></div>
             </div>
         </div>
     </footer>
@@ -211,3 +196,174 @@
     <script src="script.js"></script>
 </body>
 </html>
+`;
+
+const categories = [
+    { title: "A.C. Drive", slug: "ac-drive", image: "images/ac-drive-category.jpg" },
+    { title: "All Types Of LT Panel & Control Desk", slug: "lt-panel-control-desk", image: "images/lt-panel-category.jpg" },
+    { title: "Soft Starter", slug: "soft-starter", image: "images/soft-starter-category.jpg" },
+    { title: "Harmonic Filters", slug: "harmonic-filters", image: "images/harmonic-filters-category.jpg" },
+    { title: "Industrial LT/HT Cables", slug: "industrial-lt-ht-cables", image: "images/cables-category.jpg" },
+    { title: "Traverse Unit & Assembly", slug: "traverse-unit-assembly", image: "images/traverse-category.jpg" },
+    { title: "PLC's, Scada, Servo", slug: "plc-scada-servo", image: "images/plc-category.jpg" },
+    { title: "Instrumentation & Control", slug: "instrumentation-control", image: "images/instrumentation-category.jpg" }
+];
+
+const subpages = [
+    // A.C. Drive
+    { cat: "ac-drive", title: "VLT® Micro Drive FC 51", slug: "vlt-micro-drive-fc-51" },
+    { cat: "ac-drive", title: "VLT® FC 360 Automation Drive", slug: "vlt-fc-360-automation-drive" },
+    { cat: "ac-drive", title: "VLT® FC 101 Hvac Drive", slug: "vlt-fc-101-hvac-drive" },
+    { cat: "ac-drive", title: "VLT® HVAC Drive FC 102", slug: "vlt-hvac-drive-fc-102" },
+    { cat: "ac-drive", title: "VLT® Refrigeration Drive FC 103", slug: "vlt-refrigeration-drive-fc-103" },
+    { cat: "ac-drive", title: "VLT® Aqua Drive FC 202", slug: "vlt-aqua-drive-fc-202" },
+    { cat: "ac-drive", title: "VLT® Midi Drive FC 280", slug: "vlt-midi-drive-fc-280" },
+    { cat: "ac-drive", title: "VLT® Automation Drive FC 301 & 302", slug: "vlt-automation-drive-fc-301-302" },
+    { cat: "ac-drive", title: "VLT® Decentral Drive FCD 302", slug: "vlt-decentral-drive-fcd-302" },
+    { cat: "ac-drive", title: "VACON® 100 Industrial", slug: "vacon-100-industrial" },
+    { cat: "ac-drive", title: "VACON® NXP Common DC Bus", slug: "vacon-nxp-common-dc-bus" },
+    // Panels
+    { cat: "lt-panel-control-desk", title: "M.C.C Panel", slug: "mcc-panel" },
+    { cat: "lt-panel-control-desk", title: "P.C.C Panel", slug: "pcc-panel" },
+    { cat: "lt-panel-control-desk", title: "A.P.F.C Panel", slug: "apfc-panel" },
+    { cat: "lt-panel-control-desk", title: "AMF / DG Synchro. Panel", slug: "amf-dg-synchro-panel" },
+    { cat: "lt-panel-control-desk", title: "P.L.C Panel", slug: "plc-panel" },
+    // Soft Starter
+    { cat: "soft-starter", title: "VLT® Compact Starter MCD 201 & 202", slug: "vlt-compact-starter-mcd-201-202" },
+    { cat: "soft-starter", title: "VLT® Soft Starter MCD 500", slug: "vlt-soft-starter-mcd-500" },
+    { cat: "soft-starter", title: "VLT® Soft Starter MCD 600", slug: "vlt-soft-starter-mcd-600" },
+    // Harmonic Filters
+    { cat: "harmonic-filters", title: "VLT® AHF 005 & AHF 010 Harmonic Filters", slug: "vlt-ahf-005-ahf-010-harmonic-filters" }
+];
+
+function generateSidebar(currentSlug) {
+    let html = `
+    <div class="services-sidebar">
+        <ul>`;
+    
+    categories.forEach(cat => {
+        const isActive = cat.slug === currentSlug || subpages.some(sp => sp.slug === currentSlug && sp.cat === cat.slug);
+        html += `
+            <li class="${isActive ? 'active' : ''}">
+                <a href="${cat.slug}.html">${cat.title} <i class="fa-solid fa-chevron-right"></i></a>`;
+        
+        // If active, show subpages
+        const catSubpages = subpages.filter(sp => sp.cat === cat.slug);
+        if (catSubpages.length > 0 && isActive) {
+            html += `<ul class="submenu">`;
+            catSubpages.forEach(sp => {
+                html += `<li><a href="${sp.slug}.html" class="${sp.slug === currentSlug ? 'active' : ''}">${sp.title}</a></li>`;
+            });
+            html += `</ul>`;
+        }
+        
+        html += `</li>`;
+    });
+    
+    html += `
+        </ul>
+    </div>`;
+    return html;
+}
+
+function generateBanner(title) {
+    return `
+    <section class="page-title-banner" style="background-image: url('images/amf-dg-synchro-panel.jpg');">
+        <div class="banner-overlay"></div>
+        <div class="container banner-content text-center">
+            <h1>${title.toUpperCase()}</h1>
+            <p>Home / Services / ${title}</p>
+        </div>
+    </section>`;
+}
+
+// 1. Generate Services Landing Page
+const servicesContent = `
+    ${generateBanner("Services")}
+    <div class="container">
+        <div class="services-layout">
+            ${generateSidebar("services")}
+            <div class="services-main-content">
+                <h2>Our Services & Solutions</h2>
+                <p>PSP Techno Engineers Pvt. Ltd. provides a wide range of industrial automation services and solutions. We specialize in Motion Control products, Electrical Panels, and System Integration.</p>
+                <div class="product-detail-grid">
+                    <div class="product-image-box">
+                        <img src="images/System-Integration.jpg" alt="Services Overview">
+                    </div>
+                    <div class="product-info-box">
+                        <p>We are authorized channel partners of Danfoss and Vacon, providing top-tier products and technical support. Our team of experienced engineers ensures that every project is executed with precision and quality.</p>
+                        <ul class="activity-list" style="margin-top:20px;">
+                            <li><i class="fa-solid fa-check"></i> Installation & Commissioning</li>
+                            <li><i class="fa-solid fa-check"></i> Servicing & Repairing</li>
+                            <li><i class="fa-solid fa-check"></i> System Integration</li>
+                            <li><i class="fa-solid fa-check"></i> AMC (Annual Maintenance Contract)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+`;
+fs.writeFileSync('services.html', sharedHeaderHead.replace('{{TITLE}}', 'Services') + servicesContent + sharedFooterParts);
+
+// 2. Generate Category Pages
+categories.forEach(cat => {
+    const catContent = `
+        ${generateBanner(cat.title)}
+        <div class="container">
+            <div class="services-layout">
+                ${generateSidebar(cat.slug)}
+                <div class="services-main-content">
+                    <h2>${cat.title}</h2>
+                    <div class="product-detail-grid">
+                        <div class="product-image-box">
+                            <img src="${cat.image}" alt="${cat.title}" onerror="this.src='images/Installation-and-Commissioning.jpg'">
+                        </div>
+                        <div class="product-info-box">
+                            <p>We provide high-quality ${cat.title} solutions tailored to your industrial needs. Our products are sourced from world-class manufacturers and integrated with precision.</p>
+                            <p>Explore our range of products in this category using the sidebar menu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    fs.writeFileSync(`${cat.slug}.html`, sharedHeaderHead.replace('{{TITLE}}', cat.title) + catContent + sharedFooterParts);
+});
+
+// 3. Generate Subpages
+subpages.forEach(sp => {
+    const spContent = `
+        ${generateBanner(sp.title)}
+        <div class="container">
+            <div class="services-layout">
+                ${generateSidebar(sp.slug)}
+                <div class="services-main-content">
+                    <h2>${sp.title}</h2>
+                    <div class="product-detail-grid">
+                        <div class="product-image-box">
+                            <img src="images/${sp.slug}.jpg" alt="${sp.title}" onerror="this.src='images/vlt-compact-starter-mcd-201-202.jpg'">
+                        </div>
+                        <div class="product-info-box">
+                            <h3>Product Overview</h3>
+                            <p>The ${sp.title} is designed for high performance and reliability in demanding industrial environments. It offers advanced features for precise control and energy efficiency.</p>
+                            <div class="product-specs">
+                                <h3>Technical Specifications</h3>
+                                <table class="specs-table">
+                                    <tr><td>Model</td><td>${sp.title}</td></tr>
+                                    <tr><td>Manufacturer</td><td>Danfoss / Vacon</td></tr>
+                                    <tr><td>Application</td><td>Industrial Automation</td></tr>
+                                    <tr><td>Warranty</td><td>Standard Manufacturer Warranty</td></tr>
+                                </table>
+                            </div>
+                            <a href="contact-us.html" class="btn-primary" style="display:inline-block; margin-top:30px;">Request A Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    fs.writeFileSync(`${sp.slug}.html`, sharedHeaderHead.replace('{{TITLE}}', sp.title) + spContent + sharedFooterParts);
+});
+
+console.log("All services and subpages generated successfully.");
