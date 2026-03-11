@@ -10,10 +10,6 @@ const sharedHeaderHead = `<!DOCTYPE html>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Performance: Ensure text is visible during font load */
-        @font-face { font-display: swap; }
-    </style>
 </head>
 <body>
     <!-- Preloader -->
