@@ -7,10 +7,19 @@ const sharedHeaderHead = `<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PSP Techno Engineers Pvt. Ltd. - Authorized channel partner of Danfoss for motion control products.">
     <title>PSP Techno Engineers Pvt. Ltd | {{TITLE}}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Performance: Ensure text is visible during font load */
+        @font-face { font-display: swap; }
+    </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="site-preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 10000; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease;">
+        <img src="images/preloader.gif" alt="Loading..." style="width: 80px;">
+    </div>
     <div class="top-bar">
         <div class="container top-bar-inner">
             <div class="top-contact">
@@ -163,15 +172,15 @@ const sharedFooterParts = `
             <div class="footer-col">
                 <h3>Latest Projects</h3>
                 <div class="project-gallery">
-                    <img src="images/project-thumb-1.jpg" alt="P1">
-                    <img src="images/project-thumb-2.jpg" alt="P2">
-                    <img src="images/project-thumb-3.jpg" alt="P3">
-                    <img src="images/project-thumb-4.jpg" alt="P4">
-                    <img src="images/project-thumb-5.jpg" alt="P5">
-                    <img src="images/project-thumb-6.jpg" alt="P6">
-                    <img src="images/project-thumb-7.jpg" alt="P7">
-                    <img src="images/project-thumb-8.jpg" alt="P8">
-                    <img src="images/project-thumb-9.jpg" alt="P9">
+                    <img src="images/project-thumb-1.jpg" alt="P1" loading="lazy">
+                    <img src="images/project-thumb-2.jpg" alt="P2" loading="lazy">
+                    <img src="images/project-thumb-3.jpg" alt="P3" loading="lazy">
+                    <img src="images/project-thumb-4.jpg" alt="P4" loading="lazy">
+                    <img src="images/project-thumb-5.jpg" alt="P5" loading="lazy">
+                    <img src="images/project-thumb-6.jpg" alt="P6" loading="lazy">
+                    <img src="images/project-thumb-7.jpg" alt="P7" loading="lazy">
+                    <img src="images/project-thumb-8.jpg" alt="P8" loading="lazy">
+                    <img src="images/project-thumb-9.jpg" alt="P9" loading="lazy">
                 </div>
             </div>
             <div class="footer-col">
@@ -195,6 +204,15 @@ const sharedFooterParts = `
     <a href="https://wa.me/919650791461" class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+    <script>
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('site-preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
@@ -295,7 +313,7 @@ const servicesContent = `
             ${categories.map(cat => `
                 <div class="service-card-new" style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid #eee;">
                     <div class="card-img" style="height: 200px; overflow: hidden; position: relative;">
-                        <img src="${cat.image}" alt="${cat.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='images/Installation-and-Commissioning.jpg'">
+                        <img src="${cat.image}" alt="${cat.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='images/Installation-and-Commissioning.jpg'">
                         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, transparent 50%);"></div>
                     </div>
                     <div class="card-body" style="padding: 25px; text-align: center;">
@@ -371,7 +389,7 @@ subpages.forEach(sp => {
                     <h2>${sp.title}</h2>
                     <div class="product-detail-grid">
                         <div class="product-image-box">
-                            <img src="images/${sp.slug}.jpg" alt="${sp.title}" onerror="this.src='images/vlt-compact-starter-mcd-201-202.jpg'">
+                            <img src="images/${sp.slug}.jpg" alt="${sp.title}" loading="lazy" onerror="this.src='images/vlt-compact-starter-mcd-201-202.jpg'">
                         </div>
                         <div class="product-info-box">
                             <h3>Product Overview</h3>

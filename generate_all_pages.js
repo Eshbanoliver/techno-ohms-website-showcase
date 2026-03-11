@@ -7,10 +7,19 @@ const sharedHeaderHead = `<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PSP Techno Engineers Pvt. Ltd. - Authorized channel partner of Danfoss for motion control products.">
     <title>PSP Techno Engineers Pvt. Ltd | {{TITLE}}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Performance: Ensure text is visible during font load */
+        @font-face { font-display: swap; }
+    </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="site-preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 10000; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease;">
+        <img src="images/preloader.gif" alt="Loading..." style="width: 80px;">
+    </div>
     <div class="top-bar">
         <div class="container top-bar-inner">
             <div class="top-contact">
@@ -163,15 +172,15 @@ const sharedFooterParts = `
             <div class="footer-col">
                 <h3>Latest Projects</h3>
                 <div class="project-gallery">
-                    <img src="images/project-thumb-1.jpg" alt="P1">
-                    <img src="images/project-thumb-2.jpg" alt="P2">
-                    <img src="images/project-thumb-3.jpg" alt="P3">
-                    <img src="images/project-thumb-4.jpg" alt="P4">
-                    <img src="images/project-thumb-5.jpg" alt="P5">
-                    <img src="images/project-thumb-6.jpg" alt="P6">
-                    <img src="images/project-thumb-7.jpg" alt="P7">
-                    <img src="images/project-thumb-8.jpg" alt="P8">
-                    <img src="images/project-thumb-9.jpg" alt="P9">
+                    <img src="images/project-thumb-1.jpg" alt="P1" loading="lazy">
+                    <img src="images/project-thumb-2.jpg" alt="P2" loading="lazy">
+                    <img src="images/project-thumb-3.jpg" alt="P3" loading="lazy">
+                    <img src="images/project-thumb-4.jpg" alt="P4" loading="lazy">
+                    <img src="images/project-thumb-5.jpg" alt="P5" loading="lazy">
+                    <img src="images/project-thumb-6.jpg" alt="P6" loading="lazy">
+                    <img src="images/project-thumb-7.jpg" alt="P7" loading="lazy">
+                    <img src="images/project-thumb-8.jpg" alt="P8" loading="lazy">
+                    <img src="images/project-thumb-9.jpg" alt="P9" loading="lazy">
                 </div>
             </div>
             <div class="footer-col">
@@ -196,6 +205,15 @@ const sharedFooterParts = `
     <a href="https://wa.me/919650791461" class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+    <script>
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('site-preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
@@ -296,10 +314,10 @@ const indexContent = `
                 <div class="title-decor"><span></span></div>
             </div>
             <div class="clients-grid">
-                <div class="client-logo"><img src="images/Imperial-Malts.jpg" alt="Client 1"></div>
-                <div class="client-logo"><img src="images/MRL-1.jpg" alt="Client 2"></div>
-                <div class="client-logo"><img src="images/IndiaMART-PSP-Techno-Engineers-Private-Limited.jpg" alt="Client 3"></div>
-                <div class="client-logo"><img src="images/Imperial-Malts.jpg" alt="Client 4"></div>
+                <div class="client-logo"><img src="images/Imperial-Malts.jpg" alt="Client 1" loading="lazy"></div>
+                <div class="client-logo"><img src="images/MRL-1.jpg" alt="Client 2" loading="lazy"></div>
+                <div class="client-logo"><img src="images/IndiaMART-PSP-Techno-Engineers-Private-Limited.jpg" alt="Client 3" loading="lazy"></div>
+                <div class="client-logo"><img src="images/Imperial-Malts.jpg" alt="Client 4" loading="lazy"></div>
             </div>
             <div class="carousel-nav">
                 <i class="fa-solid fa-chevron-left prev-client"></i>
@@ -335,21 +353,21 @@ const indexContent = `
             <div class="products-grid three-grid">
                 <div class="product-card">
                     <div class="ribbon corner-ribbon">VACON</div>
-                    <img src="images/traverse-unit-assembly.jpg" alt="Product 1">
+                    <img src="images/traverse-unit-assembly.jpg" alt="Product 1" loading="lazy">
                     <h3>Traverse unit Assembly</h3>
                     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
                     <a href="#" class="read-more">READ MORE <i class="fa-solid fa-angles-right"></i></a>
                 </div>
                 <div class="product-card">
                     <div class="ribbon corner-ribbon blue">DANFOSS</div>
-                    <img src="images/plc_scada_servo.jpg" alt="Product 2">
+                    <img src="images/plc_scada_servo.jpg" alt="Product 2" loading="lazy">
                     <h3>PLC, scada, Servo</h3>
                     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
                     <a href="#" class="read-more">READ MORE <i class="fa-solid fa-angles-right"></i></a>
                 </div>
                 <div class="product-card">
                     <div class="ribbon corner-ribbon">PSP</div>
-                    <img src="images/amf-dg-synchro-panel.jpg" alt="Product 3">
+                    <img src="images/amf-dg-synchro-panel.jpg" alt="Product 3" loading="lazy">
                     <h3>All types of LT Panel & Control desk</h3>
                     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
                     <a href="#" class="read-more">READ MORE <i class="fa-solid fa-angles-right"></i></a>
@@ -371,10 +389,10 @@ const indexContent = `
             </div>
             <div class="testimonials-grid two-grid">
                 <div class="testimonial-card">
-                    <img src="images/ELM.jpg" alt="Testimonial 1">
+                    <img src="images/ELM.jpg" alt="Testimonial 1" loading="lazy">
                 </div>
                 <div class="testimonial-card">
-                    <img src="images/HMC.jpg" alt="Testimonial 2">
+                    <img src="images/HMC.jpg" alt="Testimonial 2" loading="lazy">
                 </div>
             </div>
         </div>
