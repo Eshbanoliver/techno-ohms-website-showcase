@@ -2192,3 +2192,36 @@ ul {
         padding-right: 0;
     }
 }
+
+/* =========================================================================
+   AJAX LOADING STYLES
+   ========================================================================= */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #e31e24;
+    z-index: 9999;
+    transition: width 0.3s ease;
+}
+
+#loader.loading {
+    width: 60%;
+}
+
+#loader.finish {
+    width: 100%;
+    opacity: 0;
+    transition: width 0.3s ease, opacity 0.3s 0.3s ease;
+}
+
+#page-content {
+    transition: opacity 0.3s ease;
+}
+
+#page-content.fade-out {
+    opacity: 0;
+}
+

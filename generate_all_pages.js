@@ -124,9 +124,11 @@ const sharedHeaderHead = `<!DOCTYPE html>
             </div>
         </div>
     </nav>
+    <main id="page-content">
 `;
 
 const sharedFooterParts = `
+    </main>
     <!-- CTA Bar -->
     <div class="cta-bar">
         <div class="container cta-inner">
