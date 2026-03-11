@@ -278,27 +278,54 @@ function generateBanner(title) {
 }
 
 // 1. Generate Services Landing Page
+// 1. Generate Services Landing Page
 const servicesContent = `
     ${generateBanner("Services")}
-    <div class="container">
-        <div class="services-layout">
-            ${generateSidebar("services")}
-            <div class="services-main-content">
-                <h2>Our Services & Solutions</h2>
-                <p>PSP Techno Engineers Pvt. Ltd. provides a wide range of industrial automation services and solutions. We specialize in Motion Control products, Electrical Panels, and System Integration.</p>
-                <div class="product-detail-grid">
-                    <div class="product-image-box">
-                        <img src="images/System-Integration.jpg" alt="Services Overview">
+    <div class="container section-padding">
+        <div class="section-title text-center">
+            <span class="subtitle">What We Offer</span>
+            <h2>Our Expertise & Solutions</h2>
+            <div class="divider mx-auto"></div>
+            <p class="max-w-700 mx-auto" style="margin: 0 auto 50px;">PSP Techno Engineers Pvt. Ltd. provides a wide range of industrial automation services and solutions. We specialize in Motion Control products, Electrical Panels, and System Integration.</p>
+        </div>
+        
+        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px;">
+            ${categories.map(cat => `
+                <div class="service-card-new" style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid #eee;">
+                    <div class="card-img" style="height: 200px; overflow: hidden; position: relative;">
+                        <img src="${cat.image}" alt="${cat.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='images/Installation-and-Commissioning.jpg'">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, transparent 50%);"></div>
                     </div>
-                    <div class="product-info-box">
-                        <p>We are authorized channel partners of Danfoss and Vacon, providing top-tier products and technical support. Our team of experienced engineers ensures that every project is executed with precision and quality.</p>
-                        <ul class="activity-list" style="margin-top:20px;">
-                            <li><i class="fa-solid fa-check"></i> Installation & Commissioning</li>
-                            <li><i class="fa-solid fa-check"></i> Servicing & Repairing</li>
-                            <li><i class="fa-solid fa-check"></i> System Integration</li>
-                            <li><i class="fa-solid fa-check"></i> AMC (Annual Maintenance Contract)</li>
-                        </ul>
+                    <div class="card-body" style="padding: 25px; text-align: center;">
+                        <h3 style="font-size: 1.25rem; margin-bottom: 15px; color: #0c1728; font-weight: 700;">${cat.title}</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px; line-height: 1.6;">Premium industrial solutions and integration services for ${cat.title}.</p>
+                        <a href="${cat.slug}.html" class="btn-outline-small" style="padding: 10px 25px; border: 1px solid #006DE4; color: #006DE4; border-radius: 5px; text-decoration: none; display: inline-block; transition: all 0.3s ease; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Explore Details <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
                     </div>
+                </div>
+            `).join('')}
+        </div>
+
+        <div class="extra-services section-padding" style="margin-top: 80px; background: #f8f9fa; border-radius: 20px; padding: 60px 40px;">
+            <div class="row" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
+                <div class="col" style="flex: 1; min-width: 320px;">
+                    <div style="position: relative;">
+                        <img src="images/System-Integration.jpg" alt="Integration" style="width: 100%; border-radius: 15px; box-shadow: 0 20px 50px rgba(0,0,0,0.12);">
+                        <div style="position: absolute; -bottom: 20px; -right: 20px; background: var(--primary-blue); color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
+                            <h4 style="margin: 0; font-size: 1.5rem;">15+</h4>
+                            <p style="margin: 0; font-size: 0.8rem; opacity: 0.9;">Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col" style="flex: 1.5; min-width: 320px;">
+                    <span style="color: #e31e24; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 10px;">Authorized Partner</span>
+                    <h2 style="margin-bottom: 25px; font-size: 2.2rem; color: #0c1728;">Motion Control & Automation Center</h2>
+                    <p style="margin-bottom: 30px; line-height: 1.8; color: #555;">We are authorized channel partners of Danfoss and Vacon, providing top-tier products and technical support. Our team of experienced engineers ensures that every project is executed with precision and quality.</p>
+                    <ul class="activity-list" style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 18px; display: flex; align-items: center; font-weight: 500; color: #333;"><i class="fa-solid fa-circle-check" style="color: #006DE4; margin-right: 15px; font-size: 1.3rem;"></i> 24*7 Technical Support & Service Help Desk</li>
+                        <li style="margin-bottom: 18px; display: flex; align-items: center; font-weight: 500; color: #333;"><i class="fa-solid fa-circle-check" style="color: #006DE4; margin-right: 15px; font-size: 1.3rem;"></i> Professional Installation & Commissioning</li>
+                        <li style="margin-bottom: 18px; display: flex; align-items: center; font-weight: 500; color: #333;"><i class="fa-solid fa-circle-check" style="color: #006DE4; margin-right: 15px; font-size: 1.3rem;"></i> Annual Maintenance Contract (AMC) Solutions</li>
+                        <li style="margin-bottom: 0; display: flex; align-items: center; font-weight: 500; color: #333;"><i class="fa-solid fa-circle-check" style="color: #006DE4; margin-right: 15px; font-size: 1.3rem;"></i> Custom Control Panel Design & Manufacturing</li>
+                    </ul>
                 </div>
             </div>
         </div>
