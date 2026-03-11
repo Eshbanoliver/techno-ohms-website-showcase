@@ -2350,3 +2350,94 @@ ul {
     margin-bottom: 10px;
 }
 
+
+/* =========================================================================
+   ADDITIONAL ENHANCEMENTS
+   ========================================================================= */
+
+/* Back to Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+#back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#back-to-top:hover {
+    background: var(--primary-dark);
+    transform: translateY(-5px);
+}
+
+/* Glassmorphism for Sticky Navbar */
+.navbar.sticky {
+    background-color: rgba(27, 124, 241, 0.85) !important;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hero Section Enhancements */
+.hero-content h1 {
+    font-size: 60px;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hero-content p {
+    font-size: 18px;
+    animation: fadeInUp 1s ease 0.3s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Card Hover Glow */
+.service-card-new, .cert-card {
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.service-card-new:hover, .cert-card:hover {
+    box-shadow: 0 30px 60px rgba(0, 109, 228, 0.15) !important;
+}
+
+/* Custom Selection Color */
+::selection {
+    background: var(--primary-blue);
+    color: #fff;
+}
+
+/* Responsive Font Sizes */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 40px;
+    }
+}
+

@@ -284,7 +284,7 @@ function generateBanner(title) {
 const servicesContent = `
     ${generateBanner("Services")}
     <div class="container section-padding">
-        <div class="section-title text-center reveal">
+        <div class="section-title text-center">
             <span class="subtitle">What We Offer</span>
             <h2>Our Expertise & Solutions</h2>
             <div class="divider mx-auto"></div>
@@ -292,8 +292,8 @@ const servicesContent = `
         </div>
         
         <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px;">
-            ${categories.map((cat, index) => `
-                <div class="service-card-new reveal" style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid #eee; transition-delay: ${index * 0.1}s;">
+            ${categories.map(cat => `
+                <div class="service-card-new" style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid #eee;">
                     <div class="card-img" style="height: 200px; overflow: hidden; position: relative;">
                         <img src="${cat.image}" alt="${cat.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='images/Installation-and-Commissioning.jpg'">
                         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, transparent 50%);"></div>
@@ -307,9 +307,9 @@ const servicesContent = `
             `).join('')}
         </div>
 
-        <div class="extra-services section-padding reveal" style="margin-top: 80px; background: #f8f9fa; border-radius: 20px; padding: 60px 40px;">
+        <div class="extra-services section-padding" style="margin-top: 80px; background: #f8f9fa; border-radius: 20px; padding: 60px 40px;">
             <div class="row" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
-                <div class="col reveal-left" style="flex: 1; min-width: 320px;">
+                <div class="col" style="flex: 1; min-width: 320px;">
                     <div style="position: relative;">
                         <img src="images/System-Integration.jpg" alt="Integration" style="width: 100%; border-radius: 15px; box-shadow: 0 20px 50px rgba(0,0,0,0.12);">
                         <div style="position: absolute; -bottom: 20px; -right: 20px; background: var(--primary-blue); color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
@@ -318,7 +318,7 @@ const servicesContent = `
                         </div>
                     </div>
                 </div>
-                <div class="col reveal-right" style="flex: 1.5; min-width: 320px;">
+                <div class="col" style="flex: 1.5; min-width: 320px;">
                     <span style="color: #e31e24; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 10px;">Authorized Partner</span>
                     <h2 style="margin-bottom: 25px; font-size: 2.2rem; color: #0c1728;">Motion Control & Automation Center</h2>
                     <p style="margin-bottom: 30px; line-height: 1.8; color: #555;">We are authorized channel partners of Danfoss and Vacon, providing top-tier products and technical support. Our team of experienced engineers ensures that every project is executed with precision and quality.</p>
@@ -367,13 +367,13 @@ subpages.forEach(sp => {
         <div class="container">
             <div class="services-layout">
                 ${generateSidebar(sp.slug)}
-                <div class="services-main-content reveal">
+                <div class="services-main-content">
                     <h2>${sp.title}</h2>
                     <div class="product-detail-grid">
-                        <div class="product-image-box reveal-left">
+                        <div class="product-image-box">
                             <img src="images/${sp.slug}.jpg" alt="${sp.title}" onerror="this.src='images/vlt-compact-starter-mcd-201-202.jpg'">
                         </div>
-                        <div class="product-info-box reveal-right">
+                        <div class="product-info-box">
                             <h3>Product Overview</h3>
                             <p>The ${sp.title} is designed for high performance and reliability in demanding industrial environments. It offers advanced features for precise control and energy efficiency.</p>
                             <div class="product-specs">

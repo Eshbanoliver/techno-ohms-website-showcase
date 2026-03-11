@@ -212,7 +212,7 @@ function buildPage(title, content, activeKey) {
 
 const indexContent = `
     <!-- Hero Section -->
-    <section class="hero-section" style="background-image: url('images/main-slider/1.jpg');">
+    <section class="hero-section" style="background-image: url('images/1.jpg');">
         <div class="hero-overlay"></div>
         <div class="container hero-content text-left">
             <h1 class="hero-title">The Excellent<br>Products We Offer</h1>
@@ -229,7 +229,7 @@ const indexContent = `
     </section>
 
     <!-- Welcome Ribbon -->
-    <div class="welcome-ribbon-wrapper reveal">
+    <div class="welcome-ribbon-wrapper">
         <div class="welcome-ribbon">
             <div class="container">
                 <h2>WELCOME TO PSP TECHNO ENGINEERS PVT LTD</h2>
@@ -239,10 +239,10 @@ const indexContent = `
     </div>
 
     <!-- Services Grid -->
-    <section class="services-section py-5">
+    <section class="services-section py-5 reveal">
         <div class="container">
-            <div class="services-grid six-grid reveal">
-                <div class="service-card" style="background-image: url('images/Installation-and-Commissioning.jpg');">
+            <div class="services-grid six-grid">
+                <div class="service-card" style="background-image: url('images/Installation-and-Commissioning-1.jpg');">
                     <div class="overlay"></div>
                     <div class="content">
                         <i class="fa-solid fa-gear"></i>
@@ -263,7 +263,7 @@ const indexContent = `
                         <h3>SYSTEM INTEGRATION</h3>
                     </div>
                 </div>
-                <div class="service-card" style="background-image: url('images/System-Integration.jpg');">
+                <div class="service-card" style="background-image: url('images/System-Integration-1.jpg');">
                     <div class="overlay"></div>
                     <div class="content">
                         <i class="fa-solid fa-chart-bar"></i>
@@ -291,11 +291,11 @@ const indexContent = `
     <!-- Our Clients -->
     <section class="clients-carousel py-5">
         <div class="container">
-            <div class="section-header text-center reveal">
+            <div class="section-header text-center">
                 <h2>Our Clients</h2>
                 <div class="title-decor"><span></span></div>
             </div>
-            <div class="clients-grid reveal">
+            <div class="clients-grid">
                 <div class="client-logo"><img src="images/Imperial-Malts.jpg" alt="Client 1"></div>
                 <div class="client-logo"><img src="images/MRL-1.jpg" alt="Client 2"></div>
                 <div class="client-logo"><img src="images/IndiaMART-PSP-Techno-Engineers-Private-Limited.jpg" alt="Client 3"></div>
@@ -315,26 +315,24 @@ const indexContent = `
                 <h2>About Us</h2>
                 <div class="title-decor"><span></span></div>
             </div>
-            <div class="reveal">
-                <h3>PSP Techno Engineers Pvt. Ltd come into existence on July 2009.</h3>
-                <p>The organization was established with the objective of providing high quality automation, full turnkey solution and 24*7 service supports to the industries.</p>
-                <div class="ribbon-secondary py-3 my-4">
-                    <h4>We are authorized channel partner of <img src="images/danfoss.png" alt="Danfoss" class="inline-logo"> for motion control products.</h4>
-                </div>
-                <p>PSP Techno has grown exponentially since its inception. This has been possible due to highly versatile engineers who have proven experience. Our experience in a wide variety of industries provides us with unparalleled knowledge that enables us to undertake your tough design challenges.</p>
-                <a href="about-us.html" class="btn-primary mt-3">READ MORE</a>
+            <h3>PSP Techno Engineers Pvt. Ltd come into existence on July 2009.</h3>
+            <p>The organization was established with the objective of providing high quality automation, full turnkey solution and 24*7 service supports to the industries.</p>
+            <div class="ribbon-secondary py-3 my-4">
+                <h4>We are authorized channel partner of <img src="images/danfoss.png" alt="Danfoss" class="inline-logo"> for motion control products.</h4>
             </div>
+            <p>PSP Techno has grown exponentially since its inception. This has been possible due to highly versatile engineers who have proven experience. Our experience in a wide variety of industries provides us with unparalleled knowledge that enables us to undertake your tough design challenges.</p>
+            <a href="about-us.html" class="btn-primary mt-3">READ MORE</a>
         </div>
     </section>
 
     <!-- Our Products Range -->
     <section class="products-range py-5">
         <div class="container">
-            <div class="section-header text-center reveal">
+            <div class="section-header text-center">
                 <h2>Our Products Range</h2>
                 <div class="title-decor"><span></span></div>
             </div>
-            <div class="products-grid three-grid reveal">
+            <div class="products-grid three-grid">
                 <div class="product-card">
                     <div class="ribbon corner-ribbon">VACON</div>
                     <img src="images/traverse-unit-assembly.jpg" alt="Product 1">
@@ -367,11 +365,11 @@ const indexContent = `
     <!-- Customer Testimonials -->
     <section class="testimonials py-5">
         <div class="container">
-            <div class="section-header text-center reveal">
+            <div class="section-header text-center">
                 <h2>Customer Testimonials</h2>
                 <div class="title-decor"><span></span></div>
             </div>
-            <div class="testimonials-grid two-grid reveal">
+            <div class="testimonials-grid two-grid">
                 <div class="testimonial-card">
                     <img src="images/ELM.jpg" alt="Testimonial 1">
                 </div>
@@ -394,12 +392,12 @@ const aboutContent = `
     <section class="py-5">
         <div class="container">
             <div class="row" style="display: flex; gap: 40px; align-items: center;">
-                <div style="flex: 1;" class="reveal-left">
+                <div style="flex: 1;">
                     <h2>Our History</h2>
                     <p>PSP Techno Engineers Pvt. Ltd came into existence on July 2009. The organization was established with the objective of providing high quality automation, full turnkey solution and 24*7 service supports to the industries.</p>
                     <p>PSP Techno has grown exponentially since its inception. This has been possible due to highly versatile engineers who have proven experience. Our experience in a wide variety of industries provides us with unparalleled knowledge that enables us to undertake your tough design challenges.</p>
                 </div>
-                <div style="flex: 1;" class="reveal-right">
+                <div style="flex: 1;">
                     <img src="images/about-us-img.jpg" alt="About Us" class="img-fluid rounded shadow" onerror="this.src='images/1.jpg'" style="width: 100%; border-radius: 8px;">
                 </div>
             </div>
@@ -408,7 +406,7 @@ const aboutContent = `
 `;
 
 const certContent = `
-    <section class="page-title-banner" style="background-image: url('images/main-slider/1.jpg');">
+    <section class="page-title-banner" style="background-image: url('images/1.jpg');">
         <div class="banner-overlay"></div>
         <div class="container banner-content text-center">
             <h1>CERTIFICATIONS</h1>
@@ -417,7 +415,7 @@ const certContent = `
     </section>
     <section class="py-5">
         <div class="container">
-            <div class="cert-grid reveal">
+            <div class="cert-grid">
                 <div class="cert-card"><img src="images/ISO-9001.jpg" alt="ISO 9001"></div>
                 <div class="cert-card"><img src="images/Danfoss-Certifications.jpg" alt="Danfoss"></div>
                 <div class="cert-card"><img src="images/RR-Kabel-Cable-and-Wire-Fair-Certifications.jpg" alt="RR Kabel"></div>
@@ -428,7 +426,7 @@ const certContent = `
 `;
 
 const contactContent = `
-    <section class="page-title-banner" style="background-image: url('images/main-slider/1.jpg');">
+    <section class="page-title-banner" style="background-image: url('images/1.jpg');">
         <div class="banner-overlay"></div>
         <div class="container banner-content text-center">
             <h1>CONTACT US</h1>
@@ -438,7 +436,7 @@ const contactContent = `
     <section class="py-5">
         <div class="container">
             <div class="details-grid">
-                <div class="info-col reveal-left">
+                <div class="info-col">
                     <h3>Get In Touch</h3>
                     <p>Contact us for any technical support or enquiries.</p>
                     <ul class="contact-list">
@@ -447,7 +445,7 @@ const contactContent = `
                         <li><i class="fa-solid fa-envelope"></i> sales@psptechno.com</li>
                     </ul>
                 </div>
-                <div class="form-col reveal-right">
+                <div class="form-col">
                     <form class="contact-form">
                         <input type="text" placeholder="Your Name" required>
                         <input type="email" placeholder="Your Email" required>
