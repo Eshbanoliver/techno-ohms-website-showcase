@@ -108,14 +108,7 @@ const sharedHeaderHead = `<!DOCTYPE html>
                 <li><a href="services.html" class="active">SERVICES</a></li>
 
 
-                <li class="dropdown">
-                    <a href="#">GET IN TOUCH <i class="fa-solid fa-angle-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="contact-us.html">Contact Us</a></li>
-                        <li><a href="#">Enquiry</a></li>
-                        <li><a href="#">Careers</a></li>
-                    </ul>
-                </li>
+                <li><a href="contact-us.html">CONTACT US</a></li>
             </ul>
             <div class="nav-icons">
                 <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
@@ -155,7 +148,7 @@ const sharedFooterParts = `
                     <li><a href="#"><i class="fa-solid fa-caret-right"></i> Our Products</a></li>
                     <li><a href="products.html"><i class="fa-solid fa-caret-right"></i> Products</a></li>
                     <li><a href="partners.html"><i class="fa-solid fa-caret-right"></i> Partners</a></li>
-                    <li><a href="#"><i class="fa-solid fa-caret-right"></i> Enquiry</a></li>
+
                     <li><a href="contact-us.html"><i class="fa-solid fa-caret-right"></i> Contact Us</a></li>
                 </ul>
             </div>
