@@ -57,7 +57,7 @@ const sharedHeaderHead = `<!DOCTYPE html>
                 <li><a href="certifications.html" class="{{CERT_ACTIVE}}">CERTIFICATIONS</a></li>
                 <li><a href="partners.html" class="{{PARTNERS_ACTIVE}}">PARTNERS</a></li>
                 <li class="dropdown mega-dropdown">
-                    <a href="products.html" class="{{PRODUCTS_ACTIVE}}">PRODUCTS <i class="fa-solid fa-angle-down"></i></a>
+                    <a href="products.html" class="{{PRODUCTS_ACTIVE}}">OUR PRODUCTS <i class="fa-solid fa-angle-down"></i></a>
                     <div class="mega-menu">
                         <div class="container">
                             <div class="mega-menu-grid">
@@ -105,6 +105,7 @@ const sharedHeaderHead = `<!DOCTYPE html>
                         </div>
                     </div>
                 </li>
+                <li><a href="services.html" class="{{SERVICES_ACTIVE}}">SERVICES</a></li>
                 <li><a href="clients.html" class="{{CLIENTS_ACTIVE}}">CLIENTS</a></li>
                 <li class="dropdown">
                     <a href="#">GALLERY <i class="fa-solid fa-angle-down"></i></a>
@@ -217,7 +218,7 @@ const sharedFooterParts = `
 
 function buildPage(title, content, activeKey) {
     let header = sharedHeaderHead.replace('{{TITLE}}', title);
-    const keys = ['HOME', 'ABOUT', 'CERT', 'PARTNERS', 'PRODUCTS', 'CLIENTS'];
+    const keys = ['HOME', 'ABOUT', 'CERT', 'PARTNERS', 'PRODUCTS', 'SERVICES', 'CLIENTS'];
     for (const key of keys) {
         header = header.replace('{{' + key + '_ACTIVE}}', (key === activeKey ? 'active' : ''));
     }

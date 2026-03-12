@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+const fs = require('fs');
+
+const sharedHeaderHead = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PSP Techno Engineers Pvt. Ltd. - Authorized channel partner of Danfoss for motion control products.">
-    <title>PSP Techno Engineers Pvt. Ltd | Contact Us</title>
+    <title>PSP Techno Engineers Pvt. Ltd | Services</title>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="style.css">
@@ -50,12 +52,12 @@
     <nav class="navbar">
         <div class="container navbar-inner">
             <ul class="nav-links">
-                <li><a href="index.html" class="">HOME</a></li>
-                <li><a href="about-us.html" class="">ABOUT US</a></li>
-                <li><a href="certifications.html" class="">CERTIFICATIONS</a></li>
-                <li><a href="partners.html" class="">PARTNERS</a></li>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about-us.html">ABOUT US</a></li>
+                <li><a href="certifications.html">CERTIFICATIONS</a></li>
+                <li><a href="partners.html">PARTNERS</a></li>
                 <li class="dropdown mega-dropdown">
-                    <a href="products.html" class="">OUR PRODUCTS <i class="fa-solid fa-angle-down"></i></a>
+                    <a href="products.html">OUR PRODUCTS <i class="fa-solid fa-angle-down"></i></a>
                     <div class="mega-menu">
                         <div class="container">
                             <div class="mega-menu-grid">
@@ -103,8 +105,8 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="services.html" class="">SERVICES</a></li>
-                <li><a href="clients.html" class="">CLIENTS</a></li>
+                <li><a href="services.html" class="active">SERVICES</a></li>
+                <li><a href="clients.html">CLIENTS</a></li>
                 <li class="dropdown">
                     <a href="#">GALLERY <i class="fa-solid fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
@@ -129,38 +131,9 @@
         </div>
     </nav>
     <main id="page-content">
+`;
 
-    <section class="page-title-banner" style="background-image: url('images/1.jpg');">
-        <div class="banner-overlay"></div>
-        <div class="container banner-content text-center">
-            <h1>CONTACT US</h1>
-            <p>Home / Contact Us</p>
-        </div>
-    </section>
-    <section class="py-5">
-        <div class="container">
-            <div class="details-grid">
-                <div class="info-col">
-                    <h3>Get In Touch</h3>
-                    <p>Contact us for any technical support or enquiries.</p>
-                    <ul class="contact-list">
-                        <li><i class="fa-solid fa-location-dot"></i> 306-307, Aggarwal Modern Bazaar, C-33, Lawrence Road, Delhi - 110035</li>
-                        <li><i class="fa-solid fa-phone"></i> +91 96507 91461</li>
-                        <li><i class="fa-solid fa-envelope"></i> sales@psptechno.com</li>
-                    </ul>
-                </div>
-                <div class="form-col">
-                    <form class="contact-form">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
-                        <button type="submit" class="btn-primary">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
+const sharedFooterParts = `
     </main>
     <!-- CTA Bar -->
     <div class="cta-bar">
@@ -241,3 +214,109 @@
     <script src="script.js"></script>
 </body>
 </html>
+`;
+
+const servicesPageContent = `
+    <!-- Page Hero Banner -->
+    <section class="page-hero-banner" style="background-image: url('images/service-1.jpg');">
+        <div class="hero-overlay-dark"></div>
+        <div class="container hero-content-inner text-center">
+            <h1>SERVICES</h1>
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a> <i class="fa-solid fa-chevron-right"></i> <span>Services</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Support Info Section -->
+    <section class="support-info-section section-padding">
+        <div class="container">
+            <div class="support-flex-layout">
+                <div class="support-text-content reveal-left">
+                    <h2 class="section-heading-main">24/7 Services Support Call Us <i class="fa-solid fa-phone-volume"></i></h2>
+                    <div class="support-description">
+                        <p>Customer Satisfaction is the primal objectives of the company. PSP TECHNO is dedicated to being the "Service Provider" Through excellence product and service... With our dedication and competence, we provide effective and timely engineering services. Moreover, we provide availability of services at the most competitive prices of the industry.</p>
+                        <p>We at PSP techno are dedicated to provide our customers with unparalleled 24*7 service support. We provide consultancy services for electrical & Industrial Automation for whole Plant on Turnkey basis. As the total industrial solution provider PSP Techno has strong versatile and commissioning team to provide the prompt services.</p>
+                    </div>
+                </div>
+                <div class="support-illustration reveal-right">
+                    <img src="images/support.png" alt="Support Support" class="floating-animation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid List -->
+    <section class="services-list-section section-padding">
+        <div class="container">
+            <div class="services-grid-container">
+                <div class="service-feature-card reveal">
+                    <div class="card-image-box">
+                        <img src="images/service-1.jpg" alt="Spare Parts and Accessories">
+                    </div>
+                    <div class="card-caption">
+                        <h3>Spare Parts and Accessories</h3>
+                    </div>
+                </div>
+                
+                <div class="service-feature-card reveal" style="transition-delay: 0.1s;">
+                    <div class="card-image-box">
+                        <img src="images/service-2.jpg" alt="Installation & Commissioning">
+                    </div>
+                    <div class="card-caption">
+                        <h3>Installation & Commissioning</h3>
+                    </div>
+                </div>
+                
+                <div class="service-feature-card reveal" style="transition-delay: 0.2s;">
+                    <div class="card-image-box">
+                        <img src="images/service-3.jpg" alt="Maintenance & Repairing">
+                    </div>
+                    <div class="card-caption">
+                        <h3>Maintenance & Repairing</h3>
+                    </div>
+                </div>
+                
+                <div class="service-feature-card reveal" style="transition-delay: 0.3s;">
+                    <div class="card-image-box">
+                        <img src="images/service-4.jpg" alt="System Design">
+                    </div>
+                    <div class="card-caption">
+                        <h3>System Design</h3>
+                    </div>
+                </div>
+                
+                <div class="service-feature-card reveal" style="transition-delay: 0.4s;">
+                    <div class="card-image-box">
+                        <img src="images/service-5.jpg" alt="System Integration">
+                    </div>
+                    <div class="card-caption">
+                        <h3>System Integration</h3>
+                    </div>
+                </div>
+                
+                <div class="service-feature-card reveal" style="transition-delay: 0.5s;">
+                    <div class="card-image-box">
+                        <img src="images/service-6.jpg" alt="Annual Maintenance Contract">
+                    </div>
+                    <div class="card-caption">
+                        <h3>Annual Maintenance Contract</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wide Banner Section -->
+            <div class="repairing-banner-wide reveal">
+                <div class="banner-image-container">
+                    <img src="images/service-7.jpg" alt="Repairing Service Wide">
+                </div>
+                <div class="repair-text-bar">
+                    <h3>Repairing of All Type AC Frequency Drive Like :- Danfoss, Siemens, Yaskawa etc.</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+`;
+
+fs.writeFileSync('services.html', sharedHeaderHead + servicesPageContent + sharedFooterParts);
+console.log("Services page generated successfully.");
