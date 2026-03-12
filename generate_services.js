@@ -106,7 +106,7 @@ const sharedHeaderHead = `<!DOCTYPE html>
                     </div>
                 </li>
                 <li><a href="services.html" class="active">SERVICES</a></li>
-                <li><a href="clients.html">CLIENTS</a></li>
+
                 <li class="dropdown">
                     <a href="#">GALLERY <i class="fa-solid fa-angle-down"></i></a>
                     <ul class="dropdown-menu">

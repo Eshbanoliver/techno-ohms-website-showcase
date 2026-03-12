@@ -106,7 +106,7 @@ const sharedHeaderHead = `<!DOCTYPE html>
                     </div>
                 </li>
                 <li><a href="services.html" class="{{SERVICES_ACTIVE}}">SERVICES</a></li>
-                <li><a href="clients.html" class="{{CLIENTS_ACTIVE}}">CLIENTS</a></li>
+
                 <li class="dropdown">
                     <a href="#">GALLERY <i class="fa-solid fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
@@ -218,7 +218,7 @@ const sharedFooterParts = `
 
 function buildPage(title, content, activeKey) {
     let header = sharedHeaderHead.replace('{{TITLE}}', title);
-    const keys = ['HOME', 'ABOUT', 'CERT', 'PARTNERS', 'PRODUCTS', 'SERVICES', 'CLIENTS'];
+    const keys = ['HOME', 'ABOUT', 'CERT', 'PARTNERS', 'PRODUCTS', 'SERVICES'];
     for (const key of keys) {
         header = header.replace('{{' + key + '_ACTIVE}}', (key === activeKey ? 'active' : ''));
     }
