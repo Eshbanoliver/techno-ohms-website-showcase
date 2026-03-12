@@ -469,14 +469,14 @@ ul {
 }
 
 /* =========================================================================
-   SERVICES GRID
+   PRODUCTS GRID
    ========================================================================= */
-.services-section {
+.products-section {
     padding: 60px 0;
     background-color: #fafbfc;
 }
 
-.services-grid {
+.products-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
@@ -1843,83 +1843,6 @@ ul {
     border-left: 5px solid var(--primary-blue);
 }
 
-/* =========================================================================
-   RESPONSIVE
-   ========================================================================= */
-@media (max-width: 991px) {
-
-    .services-grid,
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--navbar-blue);
-        z-index: 1000;
-        padding: 0;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links li {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        width: 100%;
-    }
-
-    .nav-links li a {
-        padding: 15px 20px;
-    }
-
-    .header-inner {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .hero-title {
-        font-size: 36px;
-    }
-
-    .cta-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-
-    .details-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .img-col {
-        order: -1;
-        /* Image on top on smaller screens */
-    }
-
-    .policies-col {
-        order: 1;
-    }
-}
-
-@media (max-width: 767px) {
-
-    .services-grid,
-    .products-grid,
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-
     .footer-grid {
         grid-template-columns: 1fr;
     }
@@ -1939,16 +1862,16 @@ ul {
     }
 }
 /* =========================================================================
-   SERVICES & SUBPAGES LAYOUT
+   PRODUCTS & SUBPAGES LAYOUT
    ========================================================================= */
-.services-layout {
+.products-layout {
     display: flex;
     gap: 40px;
     margin-top: 50px;
     margin-bottom: 80px;
 }
 
-.services-sidebar {
+.products-sidebar {
     flex: 0 0 350px;
     background-color: #0c1728;
     color: #fff;
@@ -1957,21 +1880,21 @@ ul {
     height: fit-content;
 }
 
-.services-sidebar ul {
+.products-sidebar ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.services-sidebar ul li {
+.products-sidebar ul li {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.services-sidebar ul li:last-child {
+.products-sidebar ul li:last-child {
     border-bottom: none;
 }
 
-.services-sidebar ul li a {
+.products-sidebar ul li a {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1982,39 +1905,39 @@ ul {
     transition: all 0.3s ease;
 }
 
-.services-sidebar ul li a i {
+.products-sidebar ul li a i {
     font-size: 14px;
     opacity: 0.7;
 }
 
-.services-sidebar ul li a:hover {
+.products-sidebar ul li a:hover {
     background-color: #006DE4;
 }
 
-.services-sidebar ul li.active > a {
+.products-sidebar ul li.active > a {
     background-color: #006DE4;
 }
 
 /* Submenu in Sidebar */
-.services-sidebar .submenu {
+.products-sidebar .submenu {
     background-color: #121d31;
 }
 
-.services-sidebar .submenu li a {
+.products-sidebar .submenu li a {
     padding-left: 45px;
     font-size: 14px;
     font-weight: 400;
 }
 
-.services-sidebar .submenu li a:hover {
+.products-sidebar .submenu li a:hover {
     background-color: rgba(0, 109, 228, 0.5);
 }
 
-.services-main-content {
+.products-main-content {
     flex: 1;
 }
 
-.services-main-content h2 {
+.products-main-content h2 {
     font-size: 32px;
     color: #000;
     margin-bottom: 20px;
@@ -2022,7 +1945,7 @@ ul {
     padding-bottom: 15px;
 }
 
-.services-main-content h2::after {
+.products-main-content h2::after {
     content: "";
     position: absolute;
     left: 0;
@@ -2072,10 +1995,10 @@ ul {
 }
 
 @media (max-width: 992px) {
-    .services-layout {
+    .products-layout {
         flex-direction: column;
     }
-    .services-sidebar {
+    .products-sidebar {
         flex: none;
         width: 100%;
     }
@@ -2440,4 +2363,5 @@ ul {
         font-size: 40px;
     }
 }
+
 

@@ -57,7 +57,7 @@ const sharedHeaderHead = `<!DOCTYPE html>
                 <li><a href="certifications.html">CERTIFICATIONS</a></li>
                 <li><a href="partners.html">PARTNERS</a></li>
                 <li class="dropdown mega-dropdown">
-                    <a href="services.html" class="active">SERVICES <i class="fa-solid fa-angle-down"></i></a>
+                    <a href="products.html" class="active">PRODUCTS <i class="fa-solid fa-angle-down"></i></a>
                     <div class="mega-menu">
                         <div class="container">
                             <div class="mega-menu-grid">
@@ -159,7 +159,7 @@ const sharedFooterParts = `
                     <li><a href="index.html"><i class="fa-solid fa-caret-right"></i> Home</a></li>
                     <li><a href="about-us.html"><i class="fa-solid fa-caret-right"></i> About Us</a></li>
                     <li><a href="#"><i class="fa-solid fa-caret-right"></i> Our Products</a></li>
-                    <li><a href="services.html"><i class="fa-solid fa-caret-right"></i> Services</a></li>
+                    <li><a href="products.html"><i class="fa-solid fa-caret-right"></i> Products</a></li>
                     <li><a href="partners.html"><i class="fa-solid fa-caret-right"></i> Partners</a></li>
                     <li><a href="#"><i class="fa-solid fa-caret-right"></i> Enquiry</a></li>
                     <li><a href="contact-us.html"><i class="fa-solid fa-caret-right"></i> Contact Us</a></li>
@@ -254,7 +254,7 @@ const subpages = [
 
 function generateSidebar(currentSlug) {
     let html = `
-    <div class="services-sidebar">
+    <div class="products-sidebar">
         <ul>`;
     
     categories.forEach(cat => {
@@ -288,7 +288,7 @@ function generateBanner(title) {
         <div class="banner-overlay"></div>
         <div class="container banner-content text-center">
             <h1>${title.toUpperCase()}</h1>
-            <p>Home / Services / ${title}</p>
+            <p>Home / Products / ${title}</p>
         </div>
     </section>`;
 }
@@ -296,13 +296,13 @@ function generateBanner(title) {
 // 1. Generate Services Landing Page
 // 1. Generate Services Landing Page
 const servicesContent = `
-    ${generateBanner("Services")}
+    ${generateBanner("Products")}
     <div class="container section-padding">
         <div class="section-title text-center">
             <span class="subtitle">What We Offer</span>
             <h2>Our Expertise & Solutions</h2>
             <div class="divider mx-auto"></div>
-            <p class="max-w-700 mx-auto" style="margin: 0 auto 50px;">PSP Techno Engineers Pvt. Ltd. provides a wide range of industrial automation services and solutions. We specialize in Motion Control products, Electrical Panels, and System Integration.</p>
+            <p class="max-w-700 mx-auto" style="margin: 0 auto 50px;">PSP Techno Engineers Pvt. Ltd. provides a wide range of industrial automation products and solutions. We specialize in Motion Control products, Electrical Panels, and System Integration.</p>
         </div>
         
         <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px;">
@@ -321,7 +321,7 @@ const servicesContent = `
             `).join('')}
         </div>
 
-        <div class="extra-services section-padding" style="margin-top: 80px; background: #f8f9fa; border-radius: 20px; padding: 60px 40px;">
+        <div class="extra-products section-padding" style="margin-top: 80px; background: #f8f9fa; border-radius: 20px; padding: 60px 40px;">
             <div class="row" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
                 <div class="col" style="flex: 1; min-width: 320px;">
                     <div style="position: relative;">
@@ -347,16 +347,16 @@ const servicesContent = `
         </div>
     </div>
 `;
-fs.writeFileSync('services.html', sharedHeaderHead.replace('{{TITLE}}', 'Services') + servicesContent + sharedFooterParts);
+fs.writeFileSync('products.html', sharedHeaderHead.replace('{{TITLE}}', 'Products') + servicesContent + sharedFooterParts);
 
 // 2. Generate Category Pages
 categories.forEach(cat => {
     const catContent = `
         ${generateBanner(cat.title)}
         <div class="container">
-            <div class="services-layout">
+            <div class="products-layout">
                 ${generateSidebar(cat.slug)}
-                <div class="services-main-content">
+                <div class="products-main-content">
                     <h2>${cat.title}</h2>
                     <div class="product-detail-grid">
                         <div class="product-image-box">
@@ -379,9 +379,9 @@ subpages.forEach(sp => {
     const spContent = `
         ${generateBanner(sp.title)}
         <div class="container">
-            <div class="services-layout">
+            <div class="products-layout">
                 ${generateSidebar(sp.slug)}
-                <div class="services-main-content">
+                <div class="products-main-content">
                     <h2>${sp.title}</h2>
                     <div class="product-detail-grid">
                         <div class="product-image-box">
@@ -409,4 +409,4 @@ subpages.forEach(sp => {
     fs.writeFileSync(`${sp.slug}.html`, sharedHeaderHead.replace('{{TITLE}}', sp.title) + spContent + sharedFooterParts);
 });
 
-console.log("All services and subpages generated successfully.");
+console.log("All products and subpages generated successfully.");

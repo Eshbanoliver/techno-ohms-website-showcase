@@ -57,7 +57,7 @@ const sharedHeaderHead = `<!DOCTYPE html>
                 <li><a href="certifications.html" class="{{CERT_ACTIVE}}">CERTIFICATIONS</a></li>
                 <li><a href="partners.html" class="{{PARTNERS_ACTIVE}}">PARTNERS</a></li>
                 <li class="dropdown mega-dropdown">
-                    <a href="services.html" class="{{SERVICES_ACTIVE}}">SERVICES <i class="fa-solid fa-angle-down"></i></a>
+                    <a href="products.html" class="{{PRODUCTS_ACTIVE}}">PRODUCTS <i class="fa-solid fa-angle-down"></i></a>
                     <div class="mega-menu">
                         <div class="container">
                             <div class="mega-menu-grid">
@@ -159,7 +159,7 @@ const sharedFooterParts = `
                     <li><a href="index.html"><i class="fa-solid fa-caret-right"></i> Home</a></li>
                     <li><a href="about-us.html"><i class="fa-solid fa-caret-right"></i> About Us</a></li>
                     <li><a href="#"><i class="fa-solid fa-caret-right"></i> Our Products</a></li>
-                    <li><a href="services.html"><i class="fa-solid fa-caret-right"></i> Services</a></li>
+                    <li><a href="products.html"><i class="fa-solid fa-caret-right"></i> Products</a></li>
                     <li><a href="partners.html"><i class="fa-solid fa-caret-right"></i> Partners</a></li>
                     <li><a href="#"><i class="fa-solid fa-caret-right"></i> Enquiry</a></li>
                     <li><a href="contact-us.html"><i class="fa-solid fa-caret-right"></i> Contact Us</a></li>
@@ -217,7 +217,7 @@ const sharedFooterParts = `
 
 function buildPage(title, content, activeKey) {
     let header = sharedHeaderHead.replace('{{TITLE}}', title);
-    const keys = ['HOME', 'ABOUT', 'CERT', 'PARTNERS', 'SERVICES', 'CLIENTS'];
+    const keys = ['HOME', 'ABOUT', 'CERT', 'PARTNERS', 'PRODUCTS', 'CLIENTS'];
     for (const key of keys) {
         header = header.replace('{{' + key + '_ACTIVE}}', (key === activeKey ? 'active' : ''));
     }
